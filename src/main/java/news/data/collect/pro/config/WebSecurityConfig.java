@@ -40,14 +40,15 @@ public class WebSecurityConfig {
          http
                  .authorizeRequests()
                  .antMatchers("/api/v1/**").authenticated()
+                 .antMatchers("/main").authenticated()
                  .antMatchers("/static/**").permitAll()
-                 .antMatchers("/login").permitAll()
                  .anyRequest().permitAll()
                  .and();
 
 
         http
                 .oauth2Login()//oAuth2 설정 시작
+                .loginPage("/")
                 .authorizationEndpoint()
                 .baseUri("/oauth2/authorize")
                 .authorizationRequestRepository(oAuth2AuthorizationRequestRepository)

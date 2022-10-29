@@ -38,7 +38,8 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         if (response.isCommitted()) {
             return;
         }
-        System.out.println("target:" + targetUrl);
+
+
         //쿠키에 있는 OAuth2UserRequest 를 지워준다
         clearAuthenticationAttributes(request, response);
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
