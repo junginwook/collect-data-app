@@ -1,18 +1,51 @@
 
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 1026473353732-u30hjtlt3m2tqtgskfkjvfuui7b2dhnj.apps.googleusercontent.com
+            clientSecret: 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
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+
+          kakao:
+            clientId: 90e7e9946db4a45518677eb9d16d650e
+            client-secret: WDkmTsXkPIWBRwtBohjydOWgl84JcR6D
+            redirect-uri: "{baseUrl}/oauth2/callback/{registrationId}"
+            authorization-grant-type: authorization_code
+            scope:
+              - account_email
+              - profile_nickname
+              - profile_image
+
+            clientAuthenticationMethod: POST
+            clientName: kakao
+
+        provider:
+          kakao:
+            authorization_uri: https://kauth.kakao.com/oauth/authorize
+            token_uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user_name_attribute: id
+
   datasource:
     url: jdbc:mysql://localhost:3306/data
     username: root
     password: wjddlsdnr12!
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update    # ??? only
+      ddl-auto: create
     show-sql: true
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
     mode: HTML5
+
 
 server:
   port: 9000
