@@ -46,6 +46,12 @@ spring:
     suffix: .html
     mode: HTML5
 
+api:
+  kakao:
+    client-id: 90e7e9946db4a45518677eb9d16d650e
+  naver:
+    client-id: cHBu5ukx6m
+    client-secret: cHBu5ukx6m
 
 server:
   port: 9000

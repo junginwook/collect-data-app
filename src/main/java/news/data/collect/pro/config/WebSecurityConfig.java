@@ -39,8 +39,9 @@ public class WebSecurityConfig {
 
          http
                  .authorizeRequests()
-                 .antMatchers("/api/v1/**").authenticated()
+                 .antMatchers("/api/v1/**").permitAll()
                  .antMatchers("/main").authenticated()
+                 .antMatchers("/setting").authenticated()
                  .antMatchers("/static/**").permitAll()
                  .anyRequest().permitAll()
                  .and();

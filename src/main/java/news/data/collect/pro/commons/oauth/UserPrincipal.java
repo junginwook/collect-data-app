@@ -1,6 +1,7 @@
 package news.data.collect.pro.commons.oauth;
 
 import com.sun.tools.javac.comp.MemberEnter;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import news.data.collect.pro.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,11 +12,12 @@ import java.util.Collection;
 import java.util.Map;
 
 @RequiredArgsConstructor
+@Getter
 public class UserPrincipal implements OAuth2User {
 
-    public final Long id;
-    public final String email;
-    public final String username;
+    private final Long id;
+    private final String email;
+    private final String username;
 
 
 

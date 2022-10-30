@@ -4,14 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import news.data.collect.pro.commons.enums.AuthProvider;
+import news.data.collect.pro.entity.common.BaseTimeEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserEntity {
+public class UserEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +27,10 @@ public class UserEntity {
     @Column(length = 10, nullable = false)
     @Enumerated(EnumType.STRING)
     private AuthProvider provider;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userEntity",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<KeywordEntity> keywordEntityList;
 
     public UserEntity(String username, String email, AuthProvider provider) {
 
